@@ -11,18 +11,10 @@ import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;
 import org.jboss.marshalling.MarshallingConfiguration;
 
-/**
- * @author Lilinfeng
- * @date 2014年2月25日
- * @version 1.0
- */
+
 public final class MarshallingCodeCFactory {
 
-    /**
-     * 创建Jboss Marshalling解码器MarshallingDecoder
-     * 
-     * @return
-     */
+    
     public static MarshallingDecoder buildMarshallingDecoder() {
 	final MarshallerFactory marshallerFactory = Marshalling
 		.getProvidedMarshallerFactory("serial");

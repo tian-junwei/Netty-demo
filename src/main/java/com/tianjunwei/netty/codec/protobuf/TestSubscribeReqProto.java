@@ -5,11 +5,7 @@ import java.util.List;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
-/**
- * @author Administrator
- * @date 2014年2月23日
- * @version 1.0
- */
+
 public class TestSubscribeReqProto {
 
     private static byte[] encode(SubscribeReqProto.SubscribeReq req) {
