@@ -3,13 +3,14 @@ package com.tianjunwei.netty.basic;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.logging.Logger;
 
 
-public class TimeClientHandler extends ChannelHandlerAdapter {
+public class TimeClientHandler implements ChannelHandler {
 
     private static final Logger logger = Logger
 	    .getLogger(TimeClientHandler.class.getName());
@@ -46,4 +47,15 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
 		+ cause.getMessage());
 	ctx.close();
     }
+
+	@Override
+	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+		ctx.writeAndFlush(firstMessage);
+	}
+
+	@Override
+	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }
