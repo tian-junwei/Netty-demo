@@ -11,6 +11,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 
 /**
  * @author lilinfeng
@@ -41,7 +43,7 @@ public class SubReqClient {
 
 	    // 发起异步连接操作
 	    ChannelFuture f = b.connect(host, port).sync();
-
+	    System.err.println("send finished");
 	    // 当代客户端链路关闭
 	    f.channel().closeFuture().sync();
 	} finally {

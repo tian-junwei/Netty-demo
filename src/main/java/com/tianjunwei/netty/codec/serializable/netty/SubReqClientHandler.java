@@ -2,6 +2,7 @@ package com.tianjunwei.netty.codec.serializable.netty;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import com.tianjunwei.netty.codec.pojo.SubscribeReq;
 
@@ -10,7 +11,7 @@ import com.tianjunwei.netty.codec.pojo.SubscribeReq;
  * @date 2014年2月14日
  * @version 1.0
  */
-public class SubReqClientHandler extends ChannelHandlerAdapter {
+public class SubReqClientHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * Creates a client-side handler.
@@ -19,10 +20,11 @@ public class SubReqClientHandler extends ChannelHandlerAdapter {
     }
 
     public void channelActive(ChannelHandlerContext ctx) {
-	for (int i = 0; i < 10; i++) {
-	    ctx.write(subReq(i));
-	}
-	ctx.flush();
+		for (int i = 0; i < 10; i++) {
+		    ctx.write(subReq(i));
+		}
+		ctx.flush();
+		System.err.println("send finished");
     }
 
     private SubscribeReq subReq(int i) {
@@ -37,7 +39,7 @@ public class SubReqClientHandler extends ChannelHandlerAdapter {
 
     public void channelRead(ChannelHandlerContext ctx, Object msg)
 	    throws Exception {
-	System.out.println("Receive server response : [" + msg + "]");
+	System.err.println("Receive server response : [" + msg + "]");
     }
 
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
