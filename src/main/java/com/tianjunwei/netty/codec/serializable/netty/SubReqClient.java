@@ -11,8 +11,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 
 /**
  * @author lilinfeng
@@ -23,7 +21,7 @@ public class SubReqClient {
 
     public void connect(int port, String host) throws Exception {
 	// 配置客户端NIO线程组
-	EventLoopGroup group = new NioEventLoopGroup();
+	EventLoopGroup group = new NioEventLoopGroup(1);
 	try {
 	    Bootstrap b = new Bootstrap();
 	    b.group(group).channel(NioSocketChannel.class)
