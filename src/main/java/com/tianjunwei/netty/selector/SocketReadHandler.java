@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 
 public class SocketReadHandler extends SocketHandler{
 	static Logger logger = Logger.getLogger(SocketReadHandler.class);
-	private SelectionKey selectionKey;
 	private  int BLOCK = 4096;    
 	private  ByteBuffer receivebuffer = ByteBuffer.allocate(BLOCK);  
 	
@@ -20,7 +19,6 @@ public class SocketReadHandler extends SocketHandler{
 	
 	@Override
 	public void runnerExecute(int readyKeyOps) throws IOException {
-		// TODO Auto-generated method stub
 		int count = 0;
 		if (SelectionKey.OP_READ == readyKeyOps)
 		{
