@@ -21,7 +21,7 @@ public class Client {
     public static void main(String[] args) throws Exception {  
   
         // Configure the client.  
-        EventLoopGroup group = new NioEventLoopGroup();  
+        EventLoopGroup group = new NioEventLoopGroup(10);  
         try {  
             Bootstrap b = new Bootstrap();  
             b.group(group)  
@@ -32,14 +32,14 @@ public class Client {
                  public void initChannel(SocketChannel ch) throws Exception {  
                      ChannelPipeline p = ch.pipeline();  
                      p.addLast("decoder", new StringDecoder());  
-                     p.addLast("encoder", new StringEncoder()); 
                      p.addLast(new ClientHandler()); 
+                     p.addLast("encoder", new StringEncoder()); 
                      p.addLast(new ClientHandler2()); 
                     
                  }  
              });  
   
-            ChannelFuture future = b.connect(HOST, PORT).sync();  
+            ChannelFuture future = b.connect("127.0.0.1", 8080).sync();  
             future.channel().writeAndFlush("Hello Netty Server ,I am a common client");  
             future.channel().flush();
             future.channel().closeFuture().sync();  

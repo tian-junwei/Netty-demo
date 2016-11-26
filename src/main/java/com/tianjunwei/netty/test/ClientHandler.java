@@ -7,12 +7,15 @@ public class ClientHandler extends ChannelInboundHandlerAdapter{
 
 	@Override  
     public void channelActive(ChannelHandlerContext ctx) {  
-        System.err.println("HelloWorldClientHandler Active");  
     }  
   
     @Override  
     public void channelRead(ChannelHandlerContext ctx, Object msg) {  
-       System.err.println("HelloWorldClientHandler read Message1 :"+msg);  
+       try {
+		Thread.sleep(200000);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
        //ctx.writeAndFlush(msg);
        ctx.fireChannelRead(msg);
     }  

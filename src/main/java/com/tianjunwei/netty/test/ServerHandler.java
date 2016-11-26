@@ -7,8 +7,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter{
 
 	@Override  
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {  
-        System.out.println("server channelRead..");  
-        System.out.println(ctx.channel().remoteAddress()+"->Server :"+ msg.toString());  
+        System.err.println("server channelRead..");  
+        System.err.println("server read message"+ msg.toString());  
         ctx.write("server write"+msg);  
         ctx.flush();  
     }  

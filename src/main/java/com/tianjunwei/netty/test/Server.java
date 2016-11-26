@@ -19,11 +19,11 @@ public class Server {
 	}
 	
 	public void start(){
-		EventLoopGroup bossGroup = new NioEventLoopGroup();
-		EventLoopGroup workerGroup = new NioEventLoopGroup();
+		EventLoopGroup bossGroup = new NioEventLoopGroup(2);
+		EventLoopGroup workerGroup = new NioEventLoopGroup(2);
 		
 		try {
-			ServerBootstrap serverBootstrap = new ServerBootstrap().group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+			ServerBootstrap serverBootstrap = new ServerBootstrap().group(bossGroup,workerGroup).channel(NioServerSocketChannel.class)
 					.localAddress(port).childHandler(new ChannelInitializer<SocketChannel>() {
 
 						@Override
@@ -34,7 +34,7 @@ public class Server {
 						}
 					}).option(ChannelOption.SO_BACKLOG, 128)     
 	                .childOption(ChannelOption.SO_KEEPALIVE, true);
-			ChannelFuture future = serverBootstrap.bind(port).sync();    
+			ChannelFuture future = serverBootstrap.bind(8080).sync();
 	        System.out.println("Server start listen at " + port );  
 	        future.channel().closeFuture().sync();  
 		} catch (Exception e) {
