@@ -1,19 +1,24 @@
-
+/*
+ * Copyright 2013-2018 Lilinfeng.
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *  
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *  
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.tianjunwei.netty.protocol.http.xml.server;
 
 import static io.netty.handler.codec.http.HttpHeaders.isKeepAlive;
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
 import static io.netty.handler.codec.http.HttpResponseStatus.INTERNAL_SERVER_ERROR;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.tianjunwei.netty.protocol.http.xml.codec.HttpXmlRequest;
-import com.tianjunwei.netty.protocol.http.xml.codec.HttpXmlResponse;
-import com.tianjunwei.netty.protocol.http.xml.pojo.Address;
-import com.tianjunwei.netty.protocol.http.xml.pojo.Order;
-
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -27,10 +32,23 @@ import io.netty.util.CharsetUtil;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
+import java.util.ArrayList;
+import java.util.List;
 
+import com.tianjunwei.netty.protocol.http.xml.codec.HttpXmlRequest;
+import com.tianjunwei.netty.protocol.http.xml.codec.HttpXmlResponse;
+import com.tianjunwei.netty.protocol.http.xml.pojo.Address;
+import com.tianjunwei.netty.protocol.http.xml.pojo.Order;
+
+/**
+ * @author lilinfeng
+ * @date 2014年2月14日
+ * @version 1.0
+ */
 public class HttpXmlServerHandler extends
 	SimpleChannelInboundHandler<HttpXmlRequest> {
 
+    @Override
     public void messageReceived(final ChannelHandlerContext ctx,
 	    HttpXmlRequest xmlRequest) throws Exception {
 	HttpRequest request = xmlRequest.getRequest();
@@ -80,10 +98,4 @@ public class HttpXmlServerHandler extends
 	response.headers().set(CONTENT_TYPE, "text/plain; charset=UTF-8");
 	ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
     }
-
-	@Override
-	protected void channelRead0(ChannelHandlerContext ctx, HttpXmlRequest msg) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 }

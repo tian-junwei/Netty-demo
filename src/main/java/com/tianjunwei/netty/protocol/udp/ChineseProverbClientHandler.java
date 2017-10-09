@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 .
+ * Copyright 2013-2018 Lilinfeng.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import io.netty.util.CharsetUtil;
 public class ChineseProverbClientHandler extends
 	SimpleChannelInboundHandler<DatagramPacket> {
 
+    @Override
     public void messageReceived(ChannelHandlerContext ctx, DatagramPacket msg)
 	    throws Exception {
 	String response = msg.content().toString(CharsetUtil.UTF_8);
@@ -43,10 +44,4 @@ public class ChineseProverbClientHandler extends
 	cause.printStackTrace();
 	ctx.close();
     }
-
-	@Override
-	protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 }

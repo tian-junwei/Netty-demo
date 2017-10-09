@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 .
+ * Copyright 2013-2018 Lilinfeng.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,11 @@ import io.netty.channel.socket.DatagramPacket;
 import io.netty.util.CharsetUtil;
 import io.netty.util.internal.ThreadLocalRandom;
 
-
+/**
+ * @author lilinfeng
+ * @date 2014年2月14日
+ * @version 1.0
+ */
 public class ChineseProverbServerHandler extends
 	SimpleChannelInboundHandler<DatagramPacket> {
 
@@ -36,6 +40,7 @@ public class ChineseProverbServerHandler extends
 	return DICTIONARY[quoteId];
     }
 
+    @Override
     public void messageReceived(ChannelHandlerContext ctx, DatagramPacket packet)
 	    throws Exception {
 	String req = packet.content().toString(CharsetUtil.UTF_8);
@@ -53,10 +58,4 @@ public class ChineseProverbServerHandler extends
 	ctx.close();
 	cause.printStackTrace();
     }
-
-	@Override
-	protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 }

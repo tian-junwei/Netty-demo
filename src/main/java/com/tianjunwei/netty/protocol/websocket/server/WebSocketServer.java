@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 .
+ * Copyright 2013-2018 Lilinfeng.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,11 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
-
+/**
+ * @author lilinfeng
+ * @date 2014年2月14日
+ * @version 1.0
+ */
 public class WebSocketServer {
     public void run(int port) throws Exception {
 	EventLoopGroup bossGroup = new NioEventLoopGroup();

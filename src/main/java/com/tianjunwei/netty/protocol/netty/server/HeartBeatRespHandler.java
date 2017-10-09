@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018.
+ * Copyright 2013-2018 Lilinfeng.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import com.tianjunwei.netty.protocol.netty.struct.NettyMessage;
  * @version 1.0
  */
 public class HeartBeatRespHandler extends ChannelHandlerAdapter {
-	
+    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
 	    throws Exception {
 	NettyMessage message = (NettyMessage) msg;

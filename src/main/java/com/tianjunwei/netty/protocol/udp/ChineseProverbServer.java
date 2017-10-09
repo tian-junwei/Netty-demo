@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 .
+ * Copyright 2013-2018 Lilinfeng.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,11 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 
-
+/**
+ * @author lilinfeng
+ * @date 2014年2月14日
+ * @version 1.0
+ */
 public class ChineseProverbServer {
     public void run(int port) throws Exception {
 	EventLoopGroup group = new NioEventLoopGroup();

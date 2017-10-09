@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 .
+ * Copyright 2013-2018 Lilinfeng.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,13 +40,18 @@ import io.netty.util.CharsetUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * @author lilinfeng
+ * @date 2014年2月14日
+ * @version 1.0
+ */
 public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> {
     private static final Logger logger = Logger
 	    .getLogger(WebSocketServerHandler.class.getName());
 
     private WebSocketServerHandshaker handshaker;
 
+    @Override
     public void messageReceived(ChannelHandlerContext ctx, Object msg)
 	    throws Exception {
 	// 传统的HTTP接入
@@ -143,10 +148,4 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 	cause.printStackTrace();
 	ctx.close();
     }
-
-	@Override
-	protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 }
