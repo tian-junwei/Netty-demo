@@ -1,15 +1,1 @@
-1、海康内部组件应用分发平台
-   基于SpringMVC、Mybatis和ELasticsearch等技术开发海康内部的组件应用分发平台
-   （1）基于SpringMVC的HandlerExceptionResolver机制处理整个平台的异常操作
-   （2）基于SpringMVC的HandlerInterceptor机制统计接口调用的频率、性能等数据
-   （3）基于Mybatis的Interceptor机制实现统一的物理分页机制及sql语句执行的频率、性能等数据
-   （4）基于Elasticsearch创建组件应用的全文索引增删改查操作
-   
-2、集成平台单点登录系统
-	基于 Apereo CAS 开发集成海康单点登录系统
-	（1）CAS-Client 添加服务寻址，客户端保活以及相关校验信息验证等
-	（2）CAS-Server 提供对TGT等的缓存共享机制，客户端校验成功返回相关用户信息，提供相关ST校验、申请、保活等接口
 
-3、运行管理中心消息总线系统
-	基于ActiveMq提供的MQTT协议开发运行管理中心消息总线系统
-	（1）定义新的消息转发路由规则（寻址），让应用发送与接收消息编程变得简单。
